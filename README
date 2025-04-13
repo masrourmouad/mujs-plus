@@ -1,13 +1,42 @@
 MuJS: an embeddable Javascript interpreter in C.
+MuJS Plus: Extension to MuJS.
 
 ABOUT
 
-MuJS is a lightweight Javascript interpreter designed for embedding in
+MuJS Plus is a lightweight Javascript interpreter designed for embedding in
 other software to extend them with scripting capabilities.
+
+ADDITIONS
+
+Custom function: Math.rand(min, max) 
+		 provides a random integer between min and max, including min and max.
+
+		 Math.rand(max)
+		 provides a random integer between 0 and max, including 0 and max.
+
+		 File.exists(filename)
+		 checks if the file exists, returns a boolean: true or false.
+
+		 File.read(filename)
+		 reads the file, returns file contents.
+
+		 File.write(filename, content)
+		 writes the content on the file, if file dont exist creats one
+
+		 File.append(filename, content)
+		 appends the content on the file, if file dont exist creats one
+
+String.prototype.substr
+
+String.prototype.includes
+
+Array.prototype.includes
+
 
 LICENSE
 
 MuJS is Copyright 2013-2017 Artifex Software, Inc.
+MuJS Plus is Copyright 2024-2025 MASROURMOUAD
 
 Permission to use, copy, modify, and/or distribute this software for any
 purpose with or without fee is hereby granted, provided that the above
@@ -41,7 +70,7 @@ DOWNLOAD
 
 The latest development source is available directly from the git repository:
 
-	git clone http://git.ghostscript.com/mujs.git
+	git clone https://github.com/masrourmouad/mujs-plus.git
 
 REPORTING BUGS AND PROBLEMS
 
