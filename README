@@ -63,12 +63,4 @@ To install the MuJS command line interpreter, static library and header file:
 	
 	make prefix=/usr/local install
 
-DOWNLOAD
 
-The latest development source is available directly from the git repository:
-	
-	git clone https://github.com/masrourmouad/mujs-plus.git
-
-REPORTING BUGS AND PROBLEMS ON
-	
-	https://github.com/masrourmouad/mujs-plus/
