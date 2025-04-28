@@ -34,13 +34,8 @@ static void jsB_fwrite(js_State *J)
 	FILE *f;
 	f = fopen(filename, "w");
 	
-	if(errno != 0)
-	{
-		js_error(J, "cannot write file '%s': %s", filename, strerror(errno));
-	}
 	
 	if (f == NULL) {
-		fclose(f);
 		js_error(J, "cannot write file '%s': %s", filename, strerror(errno));
 	}
 	
@@ -65,13 +60,7 @@ static void jsB_fappend(js_State *J)
 	
 	f = fopen(filename, "a");
 	
-	if(errno != 0)
-	{
-		js_error(J, "cannot append to file '%s': %s", filename, strerror(errno));
-	}
-	
 	if (f == NULL) {
-		fclose(f);
 		js_error(J, "cannot append to file '%s': %s", filename, strerror(errno));
 	}
 	
