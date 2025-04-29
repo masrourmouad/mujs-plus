@@ -12,7 +12,7 @@ Custom function: Math.rand(min, max)
 		 provides a random integer between min and max, including min and max.
 
 		 Math.rand(max)
-		 provides a random integer between 0 and max, including 0 and max.
+		 provides a random integer between 0 and max, excluding max.
 
 		 File.exists(filename)
 		 checks if the file exists, returns a boolean: true or false.
