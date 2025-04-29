@@ -107,7 +107,7 @@ static void Math_rand(js_State *J)
 	int max = js_isdefined(J, 2) ? js_tonumber(J, 2) : 0;
 	
 	if(max == 0 && min > 0) {
-		max = min;
+		max = min -1;
 		min = 0;
 	} 
 
