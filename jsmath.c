@@ -106,6 +106,16 @@ static void Math_rand(js_State *J)
 	int min = js_isdefined(J, 1) ? js_tonumber(J, 1) : 0;
 	int max = js_isdefined(J, 2) ? js_tonumber(J, 2) : 0;
 	
+	if(min < 0 || max < 0)
+	{
+		js_error(J, "input must be a positive integer");
+	}
+
+	if(min ==  max)
+	{
+		js_pushnumber(J, min);
+	}
+
 	if(max == 0 && min > 0) {
 		max = min -1;
 		min = 0;
