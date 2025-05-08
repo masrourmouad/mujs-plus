@@ -861,6 +861,39 @@ static void Sp_split(js_State *J)
 	}
 }
 
+static void Sp_strtr(js_State *J) {
+    const char *str = checkstring(J, 0); // Input string
+    char *result = js_malloc(J, strlen(str) + 1); // Allocate memory for result
+    strcpy(result, str); // Copy input string to result
+
+    if (js_isstring(J, 1) && js_isstring(J, 2)) {
+        // Only support the from-to pair case
+        const char *from = js_tostring(J, 1);
+        const char *to = js_tostring(J, 2);
+        size_t from_len = strlen(from);
+        size_t to_len = strlen(to);
+
+        if (from_len != to_len) {
+			js_free(J, result);
+            js_error(J, "From and To strings must be of equal length");
+        }
+
+        for (char *p = result; *p; ++p) {
+            const char *pos = strchr(from, *p);
+            if (pos) {
+                *p = to[pos - from];
+            }
+        }
+    } else {
+		js_free(J, result);
+        js_error(J, "Invalid arguments to strtr");
+    }
+
+    js_pushstring(J, result);
+    js_free(J, result);
+}
+
+
 void jsB_initstring(js_State *J)
 {
 	J->String_prototype->u.s.shrstr[0] = 0;
@@ -879,6 +912,7 @@ void jsB_initstring(js_State *J)
 		jsB_propf(J, "String.prototype.localeCompare", Sp_localeCompare, 1);
 		jsB_propf(J, "String.prototype.match", Sp_match, 1);
 		jsB_propf(J, "String.prototype.replace", Sp_replace, 2);
+		jsB_propf(J, "String.prototype.strtr", Sp_strtr, 2);
 		jsB_propf(J, "String.prototype.search", Sp_search, 1);
 		jsB_propf(J, "String.prototype.slice", Sp_slice, 2);
 		jsB_propf(J, "String.prototype.split", Sp_split, 2);
