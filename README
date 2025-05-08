@@ -26,11 +26,14 @@ Custom function: Math.rand(min, max)
 		 File.append(filename, content)
 		 appends the content on the file, if file dont exist creats one
 
-String.prototype.substr
+		String.prototype.substr
 
-String.prototype.includes
+		String.prototype.strtr
+		replaces characters or substrings in a string based on a mapping provided as a string
 
-Array.prototype.includes
+		String.prototype.includes
+
+		Array.prototype.includes
 
 
 LICENSE
