@@ -133,7 +133,7 @@ static void Math_rand(js_State *J)
 
 static void Math_srand(js_State *J)
 {
-	unsigned int seed = js_isdefined(J, 1) ? js_tonumber(J, 1) : 0;
+	int seed = js_isdefined(J, 1) ? js_tonumber(J, 1) : 0;
 	
 	if(seed > 0)
 	{
