@@ -14,6 +14,9 @@ Custom function: Math.rand(min, max)
 		 Math.rand(max)
 		 provides a random integer between 0 and max, excluding max.
 
+		 Math.srand(seed)
+		 optional, use with Math.rand to generate random numbers using the seed
+
 		 File.exists(filename)
 		 checks if the file exists, returns a boolean: true or false.
 
