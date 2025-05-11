@@ -99,6 +99,9 @@ static void Math_init_random(js_State *J)
 	J->seed ^= J->seed >> 17;
 	J->seed ^= J->seed << 5;
 	J->seed %= 0x7fffffff;
+	
+	//init Math.rand
+	srand(time(NULL));
 }
 
 static void Math_rand(js_State *J)
@@ -111,6 +114,10 @@ static void Math_rand(js_State *J)
 		js_error(J, "input must be a positive integer");
 	}
 
+	if(min > max && js_isdefined(J, 2)) {
+		js_error(J, "max should be bigger than min");
+	}
+
 	if(min ==  max)
 	{
 		js_pushnumber(J, min);
@@ -121,11 +128,21 @@ static void Math_rand(js_State *J)
 		min = 0;
 	} 
 
-	if(min > max) {
-		js_error(J, "max should be bigger than min");
-	}
-	
 	js_pushnumber(J, (rand() % (max - min +1)) + min);
+}
+
+static void Math_srand(js_State *J)
+{
+	unsigned int seed = js_isdefined(J, 1) ? js_tonumber(J, 1) : 0;
+	
+	if(seed > 0)
+	{
+		srand(seed);
+	}
+	else
+	{
+		js_error(J, "input must be a positive integer");
+	}
 }
 
 static void Math_round(js_State *J)
@@ -187,7 +204,6 @@ static void Math_min(js_State *J)
 
 void jsB_initmath(js_State *J)
 {
-	srand(time(NULL));
 	Math_init_random(J);
 	js_pushobject(J, jsV_newobject(J, JS_CMATH, J->Object_prototype));
 	{
@@ -215,6 +231,7 @@ void jsB_initmath(js_State *J)
 		jsB_propf(J, "Math.pow", Math_pow, 2);
 		jsB_propf(J, "Math.random", Math_random, 0);
 		jsB_propf(J, "Math.rand", Math_rand, 2);
+		jsB_propf(J, "Math.srand", Math_srand, 1);
 		jsB_propf(J, "Math.round", Math_round, 1);
 		jsB_propf(J, "Math.sin", Math_sin, 1);
 		jsB_propf(J, "Math.sqrt", Math_sqrt, 1);
