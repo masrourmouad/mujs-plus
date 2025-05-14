@@ -1,85 +1,77 @@
-MuJS: an embeddable Javascript interpreter in C.
-MuJS Plus: Extension to MuJS.
+# MuJS Plus: An Embeddable JavaScript Interpreter in C
 
-ABOUT
+MuJS Plus is an extension to MuJS, a lightweight JavaScript interpreter designed for embedding into other software to enhance them with scripting capabilities.
 
-MuJS Plus is a lightweight Javascript interpreter designed for embedding in
-other software to extend them with scripting capabilities.
+## Features
 
-ADDITIONS
+- **Lightweight and Fast**: Designed for seamless integration into applications with minimal overhead.
+- **Custom Functions and Extensions**:
+  - `Math.rand(min, max)`: Provides a random integer between `min` and `max` (inclusive).
+  - `Math.rand(max)`: Provides a random integer between `0` and `max` (excluding `max`).
+  - `Math.srand(seed)`: Optional seeding functionality for generating repeatable random numbers.
+  - File Operations:
+    - `File.exists(filename)`: Checks if a file exists, returning `true` or `false`.
+    - `File.read(filename)`: Reads and returns the contents of a file.
+    - `File.write(filename, content)`: Writes content to a file, creating one if it doesn't exist.
+    - `File.append(filename, content)`: Appends content to a file, creating one if it doesn't exist.
+  - String Enhancements:
+    - `String.prototype.substr`: Extracts a substring from a string.
+    - `String.prototype.strtr`: Replaces characters or substrings in a string based on a mapping.
+    - `String.prototype.includes`: Checks if a string contains a specified substring.
+  - Array Enhancements:
+    - `Array.prototype.includes`: Checks if an array contains a specified element.
 
-Custom function: Math.rand(min, max) 
-		 provides a random integer between min and max, including min and max.
+## Getting Started
 
-		 Math.rand(max)
-		 provides a random integer between 0 and max, excluding max.
+### Installation
 
-		 Math.srand(seed)
-		 optional, use with Math.rand to generate random numbers using the seed
+To install the MuJS Plus command-line interpreter, static library, and header file:
 
-		 File.exists(filename)
-		 checks if the file exists, returns a boolean: true or false.
+```bash
+make prefix=/usr/local install
+```
 
-		 File.read(filename)
-		 reads the file, returns file contents.
+### Compilation
 
-		 File.write(filename, content)
-		 writes the content on the file, if file dont exist creats one
+If building from source, you can use the provided Unix Makefile:
 
-		 File.append(filename, content)
-		 appends the content on the file, if file dont exist creats one
+```bash
+make release
+```
 
-		 String.prototype.substr
+Or compile the source manually with your preferred compiler:
 
-		 String.prototype.strtr
-		 replaces characters or substrings in a string based on a mapping provided as a string
+```bash
+cc -O2 -c one.c -o libmujs.o
+```
 
-		 String.prototype.includes
+### Download
 
-		 Array.prototype.includes
+The latest development source is available directly from the Git repository:
 
+```bash
+git clone https://github.com/masrourmouad/mujs-plus.git
+```
 
-LICENSE
+### License
 
-MuJS is Copyright 2013-2017 Artifex Software, Inc.
-MuJS Plus is Copyright 2024-2025 MASROURMOUAD
+MuJS is Copyright 2013-2017 Artifex Software, Inc.  
+MuJS Plus is Copyright 2024-2025 MASROURMOUAD.
 
-Permission to use, copy, modify, and/or distribute this software for any
-purpose with or without fee is hereby granted, provided that the above
-copyright notice and this permission notice appear in all copies.
+Permission to use, copy, modify, and/or distribute this software for any purpose with or without a fee is hereby granted, provided that the above copyright notice and this permission notice appear in all copies.
 
-The software is provided "as is" and the author disclaims all warranties with
-regard to this software including all implied warranties of merchantability
-and fitness. In no event shall the author be liable for any special, direct,
-indirect, or consequential damages or any damages whatsoever resulting from
-loss of use, data or profits, whether in an action of contract, negligence
-or other tortious action, arising out of or in connection with the use or
-performance of this software.
+The software is provided "as is," and the author disclaims all warranties, including implied warranties of merchantability and fitness. The author is not liable for any damages arising from the use of this software.
 
-COMPILING
+## Reporting Bugs and Issues
 
-If you are building from source you can either use the provided Unix Makefile:
+If you encounter any bugs or issues, please report them on the Ghostscript Bugzilla, with MuJS as the selected component:
 
-	make release
+[http://bugs.ghostscript.com/](http://bugs.ghostscript.com/)
 
-Or compile the source with your preferred compiler:
+## Contributing
 
-	cc -O2 -c one.c -o libmujs.o
+Contributions are welcome! Feel free to fork the repository, submit pull requests, or report issues.
 
-INSTALLING
+## Additional Information
 
-To install the MuJS command line interpreter, static library and header file:
-
-	make prefix=/usr/local install
-
-DOWNLOAD
-
-The latest development source is available directly from the git repository:
-
-	git clone https://github.com/masrourmouad/mujs-plus.git
-
-REPORTING BUGS AND PROBLEMS
-
-Report bugs on the ghostscript bugzilla, with MuJS as the selected component.
-
-	http://bugs.ghostscript.com/
+For more details and documentation, visit the [GitHub repository](https://github.com/masrourmouad/mujs-plus).
