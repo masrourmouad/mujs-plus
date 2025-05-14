@@ -66,7 +66,7 @@ The software is provided "as is," and the author disclaims all warranties, inclu
 
 If you encounter any bugs or issues, please report them on the Ghostscript Bugzilla, with MuJS as the selected component:
 
-[http://bugs.ghostscript.com/](http://bugs.ghostscript.com/)
+http://bugs.ghostscript.com/
 
 ## Contributing
 
@@ -74,4 +74,4 @@ Contributions are welcome! Feel free to fork the repository, submit pull request
 
 ## Additional Information
 
-For more details and documentation, visit the [GitHub repository](https://github.com/masrourmouad/mujs-plus).
+For more details and documentation, visit the https://github.com/masrourmouad/mujs-plus .
