@@ -5,21 +5,29 @@ MuJS Plus is an extension to MuJS, a lightweight JavaScript interpreter designed
 ## Features
 
 - **Lightweight and Fast**: Designed for seamless integration into applications with minimal overhead.
+
 - **Custom Functions and Extensions**:
   - `Math.rand(min, max)`: Provides a random integer between `min` and `max` (inclusive).
   - `Math.rand(max)`: Provides a random integer between `0` and `max` (excluding `max`).
   - `Math.srand(seed)`: Optional seeding functionality for generating repeatable random numbers.
+
   - File Operations:
     - `File.exists(filename)`: Checks if a file exists, returning `true` or `false`.
     - `File.read(filename)`: Reads and returns the contents of a file.
     - `File.write(filename, content)`: Writes content to a file, creating one if it doesn't exist.
     - `File.append(filename, content)`: Appends content to a file, creating one if it doesn't exist.
+
   - String Enhancements:
     - `String.prototype.substr`: Extracts a substring from a string.
     - `String.prototype.strtr`: Replaces characters or substrings in a string based on a mapping.
     - `String.prototype.includes`: Checks if a string contains a specified substring.
+
   - Array Enhancements:
     - `Array.prototype.includes`: Checks if an array contains a specified element.
+
+  - Aliases
+    - Int() for parseInt()
+    - Float() for parseFloat()
 
 ## Getting Started
 
