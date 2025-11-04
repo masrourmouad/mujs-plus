@@ -192,7 +192,7 @@ static void jsB_encodeURIComponent(js_State *J)
 
 static void jsB_hash(js_State *J)
 {
-	char *str = js_isdefined(J, 1) ? js_tostring(J, 1) : "hash";
+	const char *str = js_isdefined(J, 1) ? js_tostring(J, 1) : "hash";
 	
 	int hash = 0;
     while (*str) 
