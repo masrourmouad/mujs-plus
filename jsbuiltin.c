@@ -190,6 +190,19 @@ static void jsB_encodeURIComponent(js_State *J)
 	Encode(J, js_tostring(J, 1), URIUNESCAPED);
 }
 
+static void jsB_hash(js_State *J)
+{
+	char *str = js_isdefined(J, 1) ? js_tostring(J, 1) : "hash";
+	
+	int hash = 0;
+    while (*str) 
+    {
+		hash = hash * 31 + (unsigned char)(*str++);
+    }
+	
+	js_pushnumber(J, hash);
+}
+
 void jsB_init(js_State *J)
 {
 	/* Create the prototype objects here, before the constructors */
@@ -251,4 +264,6 @@ void jsB_init(js_State *J)
 	jsB_globalf(J, "decodeURIComponent", jsB_decodeURIComponent, 1);
 	jsB_globalf(J, "encodeURI", jsB_encodeURI, 1);
 	jsB_globalf(J, "encodeURIComponent", jsB_encodeURIComponent, 1);
+
+	jsB_globalf(J, "hash", jsB_hash, 1);
 }
