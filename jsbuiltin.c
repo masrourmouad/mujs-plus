@@ -239,7 +239,11 @@ void jsB_init(js_State *J)
 	js_defglobal(J, "undefined", JS_READONLY | JS_DONTENUM | JS_DONTCONF);
 
 	jsB_globalf(J, "parseInt", jsB_parseInt, 1);
+	jsB_globalf(J, "Int", jsB_parseInt, 1);  //alias
+	
 	jsB_globalf(J, "parseFloat", jsB_parseFloat, 1);
+	jsB_globalf(J, "Float", jsB_parseFloat, 1); //alias
+	
 	jsB_globalf(J, "isNaN", jsB_isNaN, 1);
 	jsB_globalf(J, "isFinite", jsB_isFinite, 1);
 
