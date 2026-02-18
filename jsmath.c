@@ -84,22 +84,12 @@ static void Math_pow(js_State *J)
 
 static void Math_random(js_State *J)
 {
-	/* Lehmer generator with a=48271 and m=2^31-1 */
-	/* Park & Miller (1988). Random Number Generators: Good ones are hard to find. */
-	J->seed = (uint64_t) J->seed * 48271 % 0x7fffffff;
-	js_pushnumber(J, (double) J->seed / 0x7fffffff);
+	//use c rand instead of Lehmer generator
+	js_pushnumber(J, (double)rand() / RAND_MAX);
 }
 
 static void Math_init_random(js_State *J)
 {
-	/* Pick initial seed by scrambling current time with Xorshift. */
-	/* Marsaglia (2003). Xorshift RNGs. */
-	J->seed = time(0) + 123;
-	J->seed ^= J->seed << 13;
-	J->seed ^= J->seed >> 17;
-	J->seed ^= J->seed << 5;
-	J->seed %= 0x7fffffff;
-	
 	//init Math.rand
 	srand(time(NULL));
 }
