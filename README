@@ -11,6 +11,7 @@ MuJS Plus is an extension to MuJS, a lightweight JavaScript interpreter designed
   - `Math.rand(max)`: Provides a random integer between `0` and `max` (excluding `max`).
   - `Math.srand(seed)`: Optional seeding functionality for generating repeatable random numbers.
   - `hash(string)`: Hash strings to integer
+  - `time()`: Provides Unix timestamp
 
   - File Operations:
     - `File.exists(filename)`: Checks if a file exists, returning `true` or `false`.
