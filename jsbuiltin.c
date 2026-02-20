@@ -1,5 +1,7 @@
+#include <time.h>
 #include "jsi.h"
 #include "regexp.h"
+
 
 static void jsB_globalf(js_State *J, const char *name, js_CFunction cfun, int n)
 {
@@ -203,6 +205,11 @@ static void jsB_hash(js_State *J)
 	js_pushnumber(J, hash);
 }
 
+static void jsB_time(js_State *J)
+{
+	js_pushnumber(J, time(NULL));
+}
+
 void jsB_init(js_State *J)
 {
 	/* Create the prototype objects here, before the constructors */
@@ -266,4 +273,5 @@ void jsB_init(js_State *J)
 	jsB_globalf(J, "encodeURIComponent", jsB_encodeURIComponent, 1);
 
 	jsB_globalf(J, "hash", jsB_hash, 1);
+	jsB_globalf(J, "time", jsB_time, 0);
 }
