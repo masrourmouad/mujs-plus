@@ -3,6 +3,20 @@
 #include <errno.h>
 
 
+static void jsB_fremove(js_State *J)
+{
+    const char *filename = js_tostring(J, 1);
+
+    if (remove(filename) == 0)
+	{
+        js_pushboolean(J, 1);
+	}
+    else
+	{
+        js_pushboolean(J, 0);
+	}
+}
+
 static void jsB_fexists(js_State *J)
 {
 	const char *filename = js_tostring(J, 1);
@@ -127,6 +141,7 @@ void jsB_initfile(js_State *J)
 		jsB_propf(J, "File.write", jsB_fwrite, 2);
 		jsB_propf(J, "File.append", jsB_fappend, 2);
 		jsB_propf(J, "File.read", jsB_fread, 1);
+		jsB_propf(J, "File.remove", jsB_fremove, 1);
 	}
 	js_defglobal(J, "File", JS_DONTENUM);
 }
