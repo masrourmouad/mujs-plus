@@ -18,6 +18,7 @@ MuJS Plus is an extension to MuJS, a lightweight JavaScript interpreter designed
     - `File.read(filename)`: Reads and returns the contents of a file.
     - `File.write(filename, content)`: Writes content to a file, creating one if it doesn't exist.
     - `File.append(filename, content)`: Appends content to a file, creating one if it doesn't exist.
+    - `File.remove(filename)`: Removes the file.
 
   - String Enhancements:
     - `String.prototype.substr`: Extracts a substring from a string.
