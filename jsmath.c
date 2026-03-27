@@ -85,7 +85,7 @@ static void Math_pow(js_State *J)
 static void Math_random(js_State *J)
 {
 	//use c rand instead of Lehmer generator
-	js_pushnumber(J, (double)rand() / RAND_MAX);
+	js_pushnumber(J, (double)rand() / ((double)RAND_MAX + 1.0));
 }
 
 static void Math_init_random(js_State *J)
