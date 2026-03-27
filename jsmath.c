@@ -118,7 +118,7 @@ static void Math_rand(js_State *J)
 	js_pushnumber(J, (rand() % (max - min +1)) + min);
 }
 
-static void Math_srand(js_State *J)
+static void Math_seed(js_State *J)
 {
 	int seed = js_isdefined(J, 1) ? js_tointeger(J, 1) : 0;
 	
@@ -218,7 +218,7 @@ void jsB_initmath(js_State *J)
 		jsB_propf(J, "Math.pow", Math_pow, 2);
 		jsB_propf(J, "Math.random", Math_random, 0);
 		jsB_propf(J, "Math.rand", Math_rand, 2);
-		jsB_propf(J, "Math.srand", Math_seed, 1);
+		jsB_propf(J, "Math.seed", Math_seed, 1);
 		jsB_propf(J, "Math.round", Math_round, 1);
 		jsB_propf(J, "Math.sin", Math_sin, 1);
 		jsB_propf(J, "Math.sqrt", Math_sqrt, 1);
