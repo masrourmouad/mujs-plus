@@ -218,7 +218,7 @@ void jsB_initmath(js_State *J)
 		jsB_propf(J, "Math.pow", Math_pow, 2);
 		jsB_propf(J, "Math.random", Math_random, 0);
 		jsB_propf(J, "Math.rand", Math_rand, 2);
-		jsB_propf(J, "Math.srand", Math_srand, 1);
+		jsB_propf(J, "Math.srand", Math_seed, 1);
 		jsB_propf(J, "Math.round", Math_round, 1);
 		jsB_propf(J, "Math.sin", Math_sin, 1);
 		jsB_propf(J, "Math.sqrt", Math_sqrt, 1);
