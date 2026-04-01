@@ -42,7 +42,6 @@ SRCS = \
 	jsbuiltin.c \
 	jscompile.c \
 	jsdate.c \
-	jsfile.c \
 	jsdtoa.c \
 	jserror.c \
 	jsfunction.c \
@@ -84,6 +83,10 @@ utfdata.h: genucd.py UnicodeData.txt SpecialCasing.txt
 build/sanitize/mujs: main.c one.c $(SRCS) $(HDRS)
 	@mkdir -p $(@D)
 	$(CC) $(CFLAGS) -g -fsanitize=address -fno-omit-frame-pointer -o $@ main.c one.c -lm $(READLINE_CFLAGS) $(READLINE_LIBS)
+
+build/undefined/mujs: main.c one.c $(SRCS) $(HDRS)
+	@mkdir -p $(@D)
+	$(CC) $(CFLAGS) -g -fsanitize=undefined -fno-omit-frame-pointer -o $@ main.c one.c -lm $(READLINE_CFLAGS) $(READLINE_LIBS)
 
 build/debug/libmujs.$(SO): one.c $(SRCS) $(HDRS)
 	@mkdir -p $(@D)
@@ -160,6 +163,7 @@ nuke: clean
 	rm -f one.c astnames.h opnames.h
 
 sanitize: build/sanitize/mujs
+undefined: build/undefined/mujs
 
 debug: build/debug/libmujs.a
 debug: build/debug/libmujs.$(SO)
