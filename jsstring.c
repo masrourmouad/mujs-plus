@@ -583,12 +583,12 @@ static void Sp_includes(js_State *J)
 static void Sp_replace_regexp(js_State *J)
 {
 	js_Regexp *re;
-	const char *source, *source0, *s, *r;
+	const char *source, *s, *r;
 	js_Buffer *sb = NULL;
 	int n, x;
 	Resub m;
 
-	source = source0 = checkstring(J, 0);
+	source = checkstring(J, 0);
 	re = js_toregexp(J, 1);
 
 	if (js_doregexec(J, re->prog, source, &m, 0)) {
@@ -597,11 +597,6 @@ static void Sp_replace_regexp(js_State *J)
 	}
 
 	re->last = 0;
-
-	if (js_try(J)) {
-		js_free(J, sb);
-		js_throw(J);
-	}
 
 loop:
 	s = m.sub[0].sp;
@@ -628,7 +623,7 @@ loop:
 				case 0: --r; /* end of string; back up */
 				/* fallthrough */
 				case '$': js_putc(J, &sb, '$'); break;
-				case '`': js_putm(J, &sb, source0, s); break;
+				case '`': js_putm(J, &sb, source, s); break;
 				case '\'': js_puts(J, &sb, s + n); break;
 				case '&':
 					js_putm(J, &sb, s, s + n);
@@ -678,6 +673,10 @@ end:
 	js_puts(J, &sb, s + n);
 	js_putc(J, &sb, 0);
 
+	if (js_try(J)) {
+		js_free(J, sb);
+		js_throw(J);
+	}
 	js_pushstring(J, sb ? sb->s : "");
 	js_endtry(J);
 	js_free(J, sb);
@@ -698,11 +697,6 @@ static void Sp_replace_string(js_State *J)
 		return;
 	}
 	n = strlen(needle);
-
-	if (js_try(J)) {
-		js_free(J, sb);
-		js_throw(J);
-	}
 
 	if (js_iscallable(J, 2)) {
 		js_copy(J, 2);
@@ -739,11 +733,6 @@ static void Sp_replace_string(js_State *J)
 		js_puts(J, &sb, s + n);
 		js_putc(J, &sb, 0);
 	}
-
-	js_pushstring(J, sb ? sb->s : "");
-	js_endtry(J);
-	js_free(J, sb);
-}
 
 	if (js_try(J)) {
 		js_free(J, sb);
